@@ -1,8 +1,22 @@
+import { useState } from "react";
+import AddTask from "./components/AddTask";
 import Todos from "./components/Todos";
-const todos = ["reading"];
+
+// let tasks = ["reading"];
 
 const App = () => {
-  return <Todos todos={todos} />;
+  const [todos, setTodos] = useState(["reading", "writing"]);
+
+  const addTodos = () => {
+    setTodos([...todos, "writing"]);
+  };
+
+  return (
+    <>
+      <AddTask addtask="Add task" onAdd={addTodos} />
+      <Todos todos={todos} />
+    </>
+  );
 };
 
 export default App;
