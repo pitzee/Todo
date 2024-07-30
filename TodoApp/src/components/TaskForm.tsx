@@ -9,6 +9,7 @@ interface Props {
 
 const schema = z.object({
   title: z.string().min(1, { message: "title is required" }),
+  status: z.string().min(1, { message: "title is required" }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -40,12 +41,23 @@ const TaskForm = ({ onClose, onAdd }: Props) => {
             <p className="text-danger">{errors.title?.message}</p>
           )}
         </div>
-        <select className="form-select mb-3">
-          <option value="incomplete">Incomplete</option>
-          <option value="complete">Complete</option>
-        </select>
+        <div className="mb-3">
+          <label htmlFor="status" className="form-label">
+            status
+          </label>
+          <select
+            {...register("status", { required: true })}
+            className="form-select"
+          >
+            <option value="incomplete">Incomplete</option>
+            <option value="complete">Complete</option>
+          </select>
+          {errors.status && (
+            <p className="text-danger">{errors.status?.message}</p>
+          )}
+        </div>
         <button type="submit" className="btn btn-primary mb-3">
-          Add task
+          submit
         </button>
       </form>
     </>

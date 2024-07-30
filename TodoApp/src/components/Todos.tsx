@@ -1,13 +1,27 @@
+interface task {
+  id: number;
+  status: string;
+  title: string;
+}
+
 interface Props {
-  todos: string[];
+  todos: task[];
 }
 
 const Todos = ({ todos }: Props) => {
   return (
     <div className="card text-bg-info mx-auto ">
       <div className="card-body">
+        {todos.length === 1 && <p>no task found</p>}
+
         {todos.map((el) => (
-          <p key={el}>{el}</p>
+          <div key={el.id}>
+            <p>
+              {el.title}
+
+              {el.status}
+            </p>
+          </div>
         ))}
       </div>
     </div>

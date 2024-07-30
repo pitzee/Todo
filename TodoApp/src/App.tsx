@@ -3,24 +3,32 @@ import AddTask from "./components/AddTask";
 import Todos from "./components/Todos";
 import TaskForm from "./components/TaskForm";
 
-const todos = ["reading"];
 const App = () => {
-  // const [todos, setTodos] = useState(["reading", "writing"]);
+  const [todos, setTodos] = useState([
+    {
+      title: "",
+      status: "",
+      id: 0,
+    },
+  ]);
   const [formVisible, setFormVisible] = useState(false);
 
-  const addTodos = () => {
+  const onAddTask = () => {
     setFormVisible(true);
   };
 
   return (
     <>
-      <AddTask addtask="Add task" onAdd={addTodos} />
+      <AddTask addtask="Add task" onAdd={onAddTask} />
       {formVisible && (
         <TaskForm
-          onAdd={(data) => console.log(data)}
+          onAdd={(todo) => {
+            setTodos([...todos, { ...todo, id: todos.length + 1 }]);
+          }}
           onClose={() => setFormVisible(false)}
         />
       )}
+
       <Todos todos={todos} />
     </>
   );
