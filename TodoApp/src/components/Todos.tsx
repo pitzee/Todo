@@ -1,5 +1,3 @@
-import { HStack } from "@chakra-ui/react";
-
 interface task {
   id: number;
   status: string;
@@ -8,9 +6,11 @@ interface task {
 
 interface Props {
   todos: task[];
+  onDelte: (id: number) => void;
+  onEdit: (id: number) => void;
 }
 
-const Todos = ({ todos }: Props) => {
+const Todos = ({ todos, onDelte, onEdit }: Props) => {
   return (
     <div className="card text-bg-info mx-auto ">
       <div className="card-body ">
@@ -23,8 +23,15 @@ const Todos = ({ todos }: Props) => {
           >
             <p>{el.title}</p>
             <div className="ml-auto">
-              <button className="btn btn-danger">del</button>
-              <button className="btn btn-primary">edit</button>
+              <button
+                onClick={() => onDelte(el.id)}
+                className="btn btn-primary"
+              >
+                edit
+              </button>
+              <button onClick={() => onDelte(el.id)} className="btn btn-danger">
+                del
+              </button>
             </div>
           </div>
         ))}
