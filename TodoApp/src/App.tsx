@@ -3,14 +3,14 @@ import AddTask from "./components/AddTask";
 import Todos from "./components/Todos";
 import TaskForm from "./components/TaskForm";
 
+interface task {
+  id: number;
+  status: string;
+  title: string;
+}
+
 const App = () => {
-  const [todos, setTodos] = useState([
-    {
-      title: "",
-      status: "",
-      id: 0,
-    },
-  ]);
+  const [todos, setTodos] = useState<task[]>([]);
   const [formVisible, setFormVisible] = useState(false);
 
   const onAddTask = () => {
