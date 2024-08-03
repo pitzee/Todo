@@ -17,6 +17,8 @@ const App = () => {
     setFormVisible(true);
   };
 
+  const onEdit = () => {};
+
   const onDelete = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
@@ -26,6 +28,8 @@ const App = () => {
       <AddTask addtask="Add task" onAdd={onAddTask} />
       {formVisible && (
         <TaskForm
+          formHeader="Add Todos"
+          submitButton="Submit"
           onAdd={(todo) => {
             setTodos([...todos, { ...todo, id: todos.length + 1 }]);
           }}

@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 interface Props {
   onClose: () => void;
   onAdd: (data: FormData) => void;
+  formHeader: string;
+  submitButton: string;
 }
 
 const schema = z.object({
@@ -14,7 +16,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const TaskForm = ({ onClose, onAdd }: Props) => {
+const TaskForm = ({ onClose, onAdd, formHeader, submitButton }: Props) => {
   const {
     register,
     handleSubmit,
@@ -22,7 +24,7 @@ const TaskForm = ({ onClose, onAdd }: Props) => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
   return (
     <>
-      <h1>Add todo</h1>
+      <h1>{formHeader}</h1>
       <div className="alert-dismissible">
         <button onClick={onClose} type="button" className="btn-close"></button>
       </div>
@@ -57,7 +59,7 @@ const TaskForm = ({ onClose, onAdd }: Props) => {
           )}
         </div>
         <button type="submit" className="btn btn-primary mb-3">
-          submit
+          {submitButton}
         </button>
       </form>
     </>

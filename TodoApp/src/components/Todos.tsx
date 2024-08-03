@@ -23,10 +23,7 @@ const Todos = ({ todos, onDelte, onEdit }: Props) => {
           >
             <p>{el.title}</p>
             <div className="ml-auto">
-              <button
-                onClick={() => onDelte(el.id)}
-                className="btn btn-primary"
-              >
+              <button onClick={() => onEdit(el.id)} className="btn btn-primary">
                 edit
               </button>
               <button onClick={() => onDelte(el.id)} className="btn btn-danger">
