@@ -7,6 +7,7 @@ interface Props {
   onAdd: (data: FormData) => void;
   formHeader: string;
   submitButton: string;
+  defaultValues?: { title: string; status: string };
 }
 
 const schema = z.object({
@@ -16,19 +17,29 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const TaskForm = ({ onClose, onAdd, formHeader, submitButton }: Props) => {
+const TaskForm = ({
+  onClose,
+  onAdd,
+  formHeader,
+  submitButton,
+  defaultValues,
+}: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
+  } = useForm<FormData>({ resolver: zodResolver(schema), defaultValues });
   return (
     <>
-      <h1>{formHeader}</h1>
-      <div className="alert-dismissible">
-        <button onClick={onClose} type="button" className="btn-close"></button>
-      </div>
       <form onSubmit={handleSubmit(onAdd)}>
+        <h1>{formHeader}</h1>
+        <div className="alert-dismissible">
+          <button
+            onClick={onClose}
+            type="button"
+            className="btn-close"
+          ></button>
+        </div>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
             Title
