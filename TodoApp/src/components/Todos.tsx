@@ -1,11 +1,11 @@
-interface task {
+interface Task {
   id: number;
   status: string;
   title: string;
 }
 
 interface Props {
-  todos: task[];
+  todos: Task[];
   onDelte: (id: number) => void;
   onEditButton: (id: number) => void;
 }

@@ -4,14 +4,14 @@ import Todos from "./components/Todos";
 import TaskForm from "./components/TaskForm";
 import EditTask from "./components/EditTask";
 
-interface task {
+interface Task {
   id: number;
   status: string;
   title: string;
 }
 
 const App = () => {
-  const [todos, setTodos] = useState<task[]>([]);
+  const [todos, setTodos] = useState<Task[]>([]);
   const [formVisible, setFormVisible] = useState(false);
   const [editFormVisible, setEditFormVisible] = useState(false);
   const [currentTask, setCurrentTask] = useState<Task | null>(null);
@@ -30,16 +30,7 @@ const App = () => {
             : todo
         )
       );
-      setEditFormVisible(false);
     }
-
-    // setTodos(
-    //   todos.map((todo) =>
-    //     todo.title === data.title
-    //       ? { ...todo, title: "reading", status: "complete" }
-    //       : todo
-    //   )
-    // );
   };
 
   const onDelete = (id: number) => {
@@ -74,10 +65,8 @@ const App = () => {
           if (taskToEdit) {
             setCurrentTask(taskToEdit);
             setEditFormVisible(true);
-            setEditFormVisible(false);
+            setFormVisible(false);
           }
-          setEditFormVisible(true);
-          setFormVisible(false);
         }}
         todos={todos}
       />
