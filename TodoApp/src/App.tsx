@@ -3,6 +3,7 @@ import AddTask from "./components/AddTask";
 import Todos from "./components/Todos";
 import TaskForm from "./components/TaskForm";
 import EditTask from "./components/EditTask";
+import FilterTask from "./components/FilterTask";
 
 interface Task {
   id: number;
@@ -15,6 +16,7 @@ const App = () => {
   const [formVisible, setFormVisible] = useState(false);
   const [editFormVisible, setEditFormVisible] = useState(false);
   const [currentTask, setCurrentTask] = useState<Task | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const onAddTask = () => {
     setFormVisible(true);
@@ -37,9 +39,18 @@ const App = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const visibleTodos = selectedCategory
+    ? todos.filter((e) => e.status === selectedCategory)
+    : todos;
+
   return (
     <>
       <AddTask addtask="Add task" onAdd={onAddTask} />
+      <FilterTask
+        onSelectCategory={(category) => {
+          setSelectedCategory(category);
+        }}
+      />
       {formVisible && (
         <TaskForm
           formHeader="Add Todos"
@@ -68,7 +79,7 @@ const App = () => {
             setFormVisible(false);
           }
         }}
-        todos={todos}
+        todos={visibleTodos}
       />
     </>
   );
