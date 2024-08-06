@@ -1,3 +1,5 @@
+import "../Styles/Todos.css";
+
 interface Task {
   id: number;
   status: string;
@@ -12,7 +14,7 @@ interface Props {
 
 const Todos = ({ todos, onDelte, onEditButton }: Props) => {
   return (
-    <div className="card text-bg-info mx-auto ">
+    <div className="card ">
       <div className="card-body ">
         {todos.length === 0 && <p>no task found</p>}
 

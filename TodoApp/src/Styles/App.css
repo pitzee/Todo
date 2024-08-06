@@ -3,5 +3,10 @@
     text-align: center;
     margin-bottom: 10px;
     
+}
 
+#root {
+    background-color: rgb(233, 241, 241);
+    border-radius: 5px;
+    padding: 10px;
 }
