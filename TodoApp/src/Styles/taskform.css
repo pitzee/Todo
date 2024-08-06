@@ -6,8 +6,10 @@ select.form-select {
     width: 200px;
 }
 
-.closebutton {
-    background-color: red;
-    border-radius: 10px;
+
+button.btn-close {
+   
+    background-color: rgb(197, 23, 23);
+    border-radius: 5px;
     width: 25px
 }
