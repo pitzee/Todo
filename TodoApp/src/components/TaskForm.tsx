@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import "../Styles/taskform.css";
 
 interface Props {
   onClose: () => void;
@@ -32,14 +33,17 @@ const TaskForm = ({
   return (
     <>
       <form onSubmit={handleSubmit(onAdd)}>
-        <h1>{formHeader}</h1>
-        <div className="alert-dismissible">
-          <button
-            onClick={onClose}
-            type="button"
-            className="btn-close"
-          ></button>
+        <div className="d-flex justify-content-between align-items-center">
+          <h1>{formHeader}</h1>
+          <div className="closebutton">
+            <button
+              onClick={onClose}
+              type="button"
+              className="btn-close"
+            ></button>
+          </div>
         </div>
+
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
             Title

@@ -4,6 +4,7 @@ import Todos from "./components/Todos";
 import TaskForm from "./components/TaskForm";
 import EditTask from "./components/EditTask";
 import FilterTask from "./components/FilterTask";
+import "./Styles/App.css";
 
 interface Task {
   id: number;
@@ -45,12 +46,16 @@ const App = () => {
 
   return (
     <>
-      <AddTask addtask="Add task" onAdd={onAddTask} />
-      <FilterTask
-        onSelectCategory={(category) => {
-          setSelectedCategory(category);
-        }}
-      />
+      <h1 id="todos">Todo List</h1>
+      <div className="d-flex justify-content-between align-items-center mb-2">
+        <AddTask addtask="Add task" onAdd={onAddTask} />
+        <FilterTask
+          onSelectCategory={(category) => {
+            setSelectedCategory(category);
+          }}
+        />
+      </div>
+
       {formVisible && (
         <TaskForm
           formHeader="Add Todos"

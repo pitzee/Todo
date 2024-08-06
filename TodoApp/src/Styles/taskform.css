@@ -1,0 +1,13 @@
+.form-control {
+    width: 300px;
+}
+
+select.form-select {
+    width: 200px;
+}
+
+.closebutton {
+    background-color: red;
+    border-radius: 10px;
+    width: 25px
+}
