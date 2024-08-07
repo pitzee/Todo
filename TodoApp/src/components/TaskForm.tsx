@@ -34,7 +34,7 @@ const TaskForm = ({
   return (
     <>
       <form
-        onSubmit={handleSubmit((data) => {
+        onSubmit={handleSubmit((data: FormData) => {
           onAdd(data);
           reset();
         })}
