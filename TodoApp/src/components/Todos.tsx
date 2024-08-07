@@ -1,10 +1,5 @@
 import "../Styles/Todos.css";
-
-interface Task {
-  id: number;
-  status: string;
-  title: string;
-}
+import Task from "../services/TaskInterface";
 
 interface Props {
   todos: Task[];

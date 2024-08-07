@@ -5,12 +5,7 @@ import TaskForm from "./components/TaskForm";
 import EditTask from "./components/EditTask";
 import FilterTask from "./components/FilterTask";
 import "./Styles/App.css";
-
-interface Task {
-  id: number;
-  status: string;
-  title: string;
-}
+import "./services/TaskInterface";
 
 const App = () => {
   const [todos, setTodos] = useState<Task[]>([]);
