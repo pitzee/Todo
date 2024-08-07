@@ -1,3 +1,3 @@
 # Todo
 
-to do app
+it a todo app that has crud operation, the user can add, delete, edit todos
