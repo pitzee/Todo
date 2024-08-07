@@ -28,11 +28,17 @@ const TaskForm = ({
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema), defaultValues });
   return (
     <>
-      <form onSubmit={handleSubmit(onAdd)}>
+      <form
+        onSubmit={handleSubmit((data) => {
+          onAdd(data);
+          reset();
+        })}
+      >
         <div className="d-flex justify-content-between align-items-center">
           <h1>{formHeader}</h1>
           <div className="closebutton">
