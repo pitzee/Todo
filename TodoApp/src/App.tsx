@@ -5,7 +5,7 @@ import TaskForm from "./components/TaskForm";
 import EditTask from "./components/EditTask";
 import FilterTask from "./components/FilterTask";
 import "./Styles/App.css";
-import "./services/TaskInterface";
+import Task from "./services/TaskInterface";
 
 const App = () => {
   const [todos, setTodos] = useState<Task[]>([]);
