@@ -5,7 +5,11 @@ interface Props {
 
 const AddTask = ({ addtask, onAdd }: Props) => {
   return (
-    <button onClick={onAdd} type="button" className="btn btn-primary">
+    <button
+      onClick={onAdd}
+      type="button"
+      className="rounded-md  p-2  border-2 bg-blue-700 hover:text-white font-sans font-bold "
+    >
       {addtask}
     </button>
   );

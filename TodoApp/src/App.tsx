@@ -42,46 +42,53 @@ const App = () => {
 
   return (
     <>
-      <h1 id="todos">Todo List</h1>
-      <div className="d-flex justify-content-between align-items-center mb-2">
-        <AddTask addtask="Add task" onAdd={onAddTask} />
-        <FilterTask
-          onSelectCategory={(category) => {
-            setSelectedCategory(category);
-          }}
-        />
+      <div className="flex  items-center justify-center h-screen bg-slate-100 ">
+        <div className="p-2 mx-6 rounded-2xl bg-blue-300">
+          <div className="flex items-center justify-center font-extrabold mt-2 mb-2">
+            <h1 className="text-font-bold text-black text-3xl ">Todo List</h1>
+          </div>
+
+          <div className="flex flex-col ">
+            <AddTask addtask="Add task" onAdd={onAddTask} />
+            <FilterTask
+              onSelectCategory={(category) => {
+                setSelectedCategory(category);
+              }}
+            />
+          </div>
+
+          {formVisible && (
+            <TaskForm
+              formHeader="Add Todos"
+              submitButton="Submit"
+              onAdd={(todo) => {
+                setTodos([...todos, { ...todo, id: todos.length + 1 }]);
+              }}
+              onClose={() => setFormVisible(false)}
+            />
+          )}
+          {editFormVisible && (
+            <EditTask
+              onClose={() => setEditFormVisible(false)}
+              onEditSubmit={onEdit}
+              task={currentTask}
+            />
+          )}
+
+          <Todos
+            onDelte={onDelete}
+            onEditButton={(id: number) => {
+              const taskToEdit = todos.find((todo) => todo.id === id);
+              if (taskToEdit) {
+                setCurrentTask(taskToEdit);
+                setEditFormVisible(true);
+                setFormVisible(false);
+              }
+            }}
+            todos={visibleTodos}
+          />
+        </div>
       </div>
-
-      {formVisible && (
-        <TaskForm
-          formHeader="Add Todos"
-          submitButton="Submit"
-          onAdd={(todo) => {
-            setTodos([...todos, { ...todo, id: todos.length + 1 }]);
-          }}
-          onClose={() => setFormVisible(false)}
-        />
-      )}
-      {editFormVisible && (
-        <EditTask
-          onClose={() => setEditFormVisible(false)}
-          onEditSubmit={onEdit}
-          task={currentTask}
-        />
-      )}
-
-      <Todos
-        onDelte={onDelete}
-        onEditButton={(id: number) => {
-          const taskToEdit = todos.find((todo) => todo.id === id);
-          if (taskToEdit) {
-            setCurrentTask(taskToEdit);
-            setEditFormVisible(true);
-            setFormVisible(false);
-          }
-        }}
-        todos={visibleTodos}
-      />
     </>
   );
 };
