@@ -7,7 +7,7 @@ interface Props {
 const FilterTask = ({ onSelectCategory }: Props) => {
   return (
     <select
-      className="form-select"
+      className="rounded border-2 p-2 font-bold"
       onChange={(event) => onSelectCategory(event.target.value)}
       id="filtertask"
     >

@@ -42,13 +42,15 @@ const App = () => {
 
   return (
     <>
+      {/* main div */}
       <div className="flex  items-center justify-center h-screen bg-slate-100 ">
+        {/* header div */}
         <div className="p-2 mx-6 rounded-2xl bg-blue-300">
           <div className="flex items-center justify-center font-extrabold mt-2 mb-2">
             <h1 className="text-font-bold text-black text-3xl ">Todo List</h1>
           </div>
 
-          <div className="flex flex-col ">
+          <div className="flex flex-col space-y-2  md:flex-row md:justify-between md:space-x-40">
             <AddTask addtask="Add task" onAdd={onAddTask} />
             <FilterTask
               onSelectCategory={(category) => {
