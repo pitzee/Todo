@@ -61,25 +61,27 @@ const TaskForm = ({
             </button>
           </div>
 
-          <div className="font-bold border-2 ">
-            <label htmlFor="title">Title</label>
+          <div className="border-2 ">
+            <label htmlFor="title" className="flex flex-col font-bold">
+              Title
+            </label>
             <input
               {...register("title", { required: true, minLength: 1 })}
               id="title"
               type="text"
-              className="rounded border-2 border-black max-w-1/2 ml-2 "
+              className="rounded border-2 border-gray-300 max-w-1/2 mt-2"
             />
             {errors.title && (
               <p className="font text-red-600">{errors.title?.message}</p>
             )}
           </div>
           <div className="mt-2">
-            <label htmlFor="status" className="font-bold">
+            <label htmlFor="status" className="flex flex-col font-bold">
               status
             </label>
             <select
               {...register("status", { required: true })}
-              className="rounded border-2 border-black font-bold ml-2"
+              className="rounded border-2 border-gray-300 font-bold mt-2 p-1"
             >
               <option value="incomplete">Incomplete</option>
               <option value="complete">Complete</option>
@@ -90,7 +92,7 @@ const TaskForm = ({
           </div>
           <button
             type="submit"
-            className="bg-blue-700 p-2 border-2 rounded-md hover:text-white border-white mt-2"
+            className="bg-blue-600 p-2 border-2 rounded-md hover:text-white border-white mt-2"
           >
             {submitButton}
           </button>

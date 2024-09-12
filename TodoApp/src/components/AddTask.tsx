@@ -8,7 +8,7 @@ const AddTask = ({ addtask, onAdd }: Props) => {
     <button
       onClick={onAdd}
       type="button"
-      className="rounded-md  p-2  border-2 bg-blue-700 hover:text-white font-sans font-bold "
+      className="rounded-md  p-2  border-2 bg-blue-600 hover:text-white font-sans font-bold "
     >
       {addtask}
     </button>
