@@ -21,7 +21,7 @@ const Todos = ({ todos, onDelte, onEditButton }: Props) => {
           key={el.id}
           className="flex justify-between border-2 rounded p-1 bg-white"
         >
-          <p className="font-sans font-bold">{el.title}</p>
+          <p className="flex flex-col font-sans font-bold">{el.title}</p>
           <div className="ml-auto">
             <button
               onClick={() => onEditButton(el.id)}

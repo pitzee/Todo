@@ -33,7 +33,7 @@ const TaskForm = ({
   } = useForm<FormData>({ resolver: zodResolver(schema), defaultValues });
   return (
     <>
-      <div className="flex rounded bg-gray-200 mt-2 p-2">
+      <div className="rounded bg-gray-200 mt-2 p-2">
         <form
           onSubmit={handleSubmit((data: FormData) => {
             onAdd(data);
@@ -73,13 +73,13 @@ const TaskForm = ({
               <p className="font text-red-600">{errors.title?.message}</p>
             )}
           </div>
-          <div className="flex justify-between mt-2">
+          <div className="mt-2">
             <label htmlFor="status" className="font-bold">
               status
             </label>
             <select
               {...register("status", { required: true })}
-              className="rounded border-2 border-black font-bold"
+              className="rounded border-2 border-black font-bold ml-2"
             >
               <option value="incomplete">Incomplete</option>
               <option value="complete">Complete</option>
@@ -90,7 +90,7 @@ const TaskForm = ({
           </div>
           <button
             type="submit"
-            className="bg-blue-700 p-2 border-2 rounded-md hover:text-white border-white"
+            className="bg-blue-700 p-2 border-2 rounded-md hover:text-white border-white mt-2"
           >
             {submitButton}
           </button>
